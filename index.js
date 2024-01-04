@@ -6,6 +6,7 @@ var cors = require('cors')
  
 
 const connectDB = require('./db'); 
+//ncdjncdf
 
 
 const app = express();
@@ -17,6 +18,13 @@ const PORT = process.env.PORT || 3000;
 app.use('/qrcodes', qrrouter);
 
 // Server
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+app.listen(PORT, async() => {
+  try {
+    await connectDB
+    console.log("connected to data-base")
+    
+} catch (error) {
+   console.log(error) 
+}
+console.log(`server is running at port ${process.env.port}`);
 });
